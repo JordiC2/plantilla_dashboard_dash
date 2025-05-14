@@ -1,0 +1,4 @@
+dash
+dash-mantine-components
+pandas
+plotly
