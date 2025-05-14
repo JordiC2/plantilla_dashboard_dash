@@ -2,6 +2,7 @@ from dash import Dash, dcc, html, Input, Output, dash_table
 import plotly.express as px
 import pandas as pd
 import dash_mantine_components as dmc
+import os
 
 # Cargar datos
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv')
@@ -146,4 +147,5 @@ def update_scatter(cont):
     return px.scatter(data, x='gdpPercap', y='lifeExp', size='pop', color='continent', hover_name='country', template="plotly_white")
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=8051)
+    port = int(os.environ.get("PORT", 8050))
+    app.run_server(host="0.0.0.0", port=port)
